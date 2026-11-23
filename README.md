@@ -54,6 +54,39 @@ The second card improved prefill by **41.4%** but reduced per-token decode by **
 
 The initial two-device attempt had aborted with `CUDA error: no kernel image is available for execution on the device` because we originally built for SM89 only. That failure was an **invalid CUDA build target**, corrected by compiling for `86;89`, not an actual Kolibri architecture limitation.
 
+## ConceptLadder Exact v0.4 knowledge-depth benchmark
+
+The official Kolibri 1.1 Q4_K_M GGUF was tested with [ConceptLadder Exact v0.4](https://github.com/bettercallcaleb/conceptladder-bench), commit `1bcd09a`, using two seeded sets of 240 **open-answer** technical questions. Unlike the earlier multiple-choice suites, Exact has no candidate answers to exploit. The model was sampled at temperature 0 without thinking, maximum 64 output tokens, 4k context, one RTX 4090 and `-ncmoe 50 -ngl 999 -fitt 2048 -t 8`.
+
+| Seed | Correct | Accuracy | Invalid-format answers | Mean contiguous depth |
+|---|---:|---:|---:|---:|
+| 17 | 75/240 | 31.25% | 18 | 0.85/4 |
+| 41 | 83/240 | 34.58% | 16 | 1.08/4 |
+| **Combined** | **158/480** | **32.92%** | **34** | — |
+
+| Topic | Seed 17 | Seed 41 | Combined |
+|---|---:|---:|---:|
+| Networking | 30/96 | 36/96 | 66/192 |
+| Databases | 16/48 | 15/48 | 31/96 |
+| Linux/systems | 16/48 | 18/48 | 34/96 |
+| Security/Kubernetes | 13/48 | 14/48 | 27/96 |
+
+| Difficulty level | Seed 17 | Seed 41 | Combined |
+|---|---:|---:|---:|
+| L1 | 31/60 | 37/60 | 68/120 |
+| L2 | 23/60 | 26/60 | 49/120 |
+| L3 | 18/60 | 16/60 | 34/120 |
+| L4 | 3/60 | 4/60 | 7/120 |
+
+
+The strict scoring algorithm counted 34 invalid-format responses as wrong. Some were numerically plausible with appended units; others included unfinished explanations. No model-side or post-hoc grader repaired these answers. This benchmark shares 15 technical concepts between forms, and **is not** a matched base-vs-quantized quality comparison.
+
+Full unmodified model responses: [`results/conceptladder-exact-v04/`](results/conceptladder-exact-v04/). Replay from a compatible llama.cpp checkout and a ConceptLadder v0.4 clone:
+
+    ./scripts/conceptladder_exact.sh /path/to/Kolibri-1.1-Q4_K_M.gguf /path/to/llama-server /path/to/conceptladder-bench ./new-results
+
+Source dataset SHA256 fingerprints: seed 17 `437d994c1a2c027902951811f2fd43b45468bc2ed4fd78f3d90e63c97743011a`; seed 41 `e7026679ed0f78ddf7f9bbee788b89de1077cf25ad8805220f5376c092c67893`. The model SHA256 is unchanged from the performance test above.
+
 ## Reuse
 
 The scripts and metadata in this repository are MIT licensed. The model weights remain with the original publisher and subject to the original model license. Results are machine- and version-specific. No server should be exposed without authentication; the server example binds to loopback only.

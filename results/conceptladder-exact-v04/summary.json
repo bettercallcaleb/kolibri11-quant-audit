@@ -1,0 +1,119 @@
+{
+  "model": "Aleph-Alpha/Kolibri-1.1",
+  "quant": "Q4_K_M",
+  "suite": "ConceptLadder Exact v0.4",
+  "inference": {
+    "model_alias": "kolibri11-q4",
+    "context": 4096,
+    "max_tokens": 64,
+    "temperature": 0,
+    "reasoning": "off",
+    "ngl": 999,
+    "ncmoe": 50,
+    "fit_target_mib": 2048,
+    "threads": 8,
+    "gpu": "RTX 4090"
+  },
+  "seeds": {
+    "17": {
+      "correct": 75,
+      "total": 240,
+      "accuracy": 0.3125,
+      "invalid": 18,
+      "mean_contiguous_depth": 0.85,
+      "by_pack": {
+        "db-hard": {
+          "correct": 16,
+          "total": 48
+        },
+        "net-hard": {
+          "correct": 30,
+          "total": 96
+        },
+        "security-hard": {
+          "correct": 13,
+          "total": 48
+        },
+        "sys-hard": {
+          "correct": 16,
+          "total": 48
+        }
+      },
+      "by_level": {
+        "L1": {
+          "correct": 31,
+          "total": 60
+        },
+        "L2": {
+          "correct": 23,
+          "total": 60
+        },
+        "L3": {
+          "correct": 18,
+          "total": 60
+        },
+        "L4": {
+          "correct": 3,
+          "total": 60
+        }
+      },
+      "errors": {
+        "unparseable": 18
+      },
+      "dataset_sha256": "437d994c1a2c027902951811f2fd43b45468bc2ed4fd78f3d90e63c97743011a"
+    },
+    "41": {
+      "correct": 83,
+      "total": 240,
+      "accuracy": 0.345833,
+      "invalid": 16,
+      "mean_contiguous_depth": 1.083333,
+      "by_pack": {
+        "db-hard": {
+          "correct": 15,
+          "total": 48
+        },
+        "net-hard": {
+          "correct": 36,
+          "total": 96
+        },
+        "security-hard": {
+          "correct": 14,
+          "total": 48
+        },
+        "sys-hard": {
+          "correct": 18,
+          "total": 48
+        }
+      },
+      "by_level": {
+        "L1": {
+          "correct": 37,
+          "total": 60
+        },
+        "L2": {
+          "correct": 26,
+          "total": 60
+        },
+        "L3": {
+          "correct": 16,
+          "total": 60
+        },
+        "L4": {
+          "correct": 4,
+          "total": 60
+        }
+      },
+      "errors": {
+        "unparseable": 16
+      },
+      "dataset_sha256": "e7026679ed0f78ddf7f9bbee788b89de1077cf25ad8805220f5376c092c67893"
+    }
+  },
+  "combined": {
+    "correct": 158,
+    "total": 480,
+    "invalid": 34,
+    "accuracy": 0.329167
+  }
+}
