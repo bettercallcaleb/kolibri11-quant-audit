@@ -20,7 +20,7 @@ This is not a controlled BF16-versus-Q4 comparison or an evaluation of the vendo
 | `-ncmoe 30` | 440.19 | 70.71 |
 | `-ncmoe 0` | 432.80 | 70.71 |
 
-See the individual per-repetition timings in `results/*clean-r5.json`.
+See the individual per-repetition timings in `results/*clean-r5.json`. Numeric timings are preserved; host-specific absolute model paths and instrument timestamp fields were normalized before public release.
 
 The first two-repetition pilot measured 62–65 tokens/s. A subsequent attempt with a separately running 8k-context model server holding ~20GB VRAM measured ~18 tokens/s; **those contaminated measurements were excluded**. Killing the leftover server restored 70–71 tokens/s. This illustrates how model residency and memory placement can completely invalidate a seemingly fair performance comparison.
 
