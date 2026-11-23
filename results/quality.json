@@ -1,0 +1,175 @@
+{
+  "model": "models/Kolibri-1.1-Q4_K_M.gguf",
+  "cases": [
+    {
+      "id": "arithmetic-37x19",
+      "passed": true,
+      "content": "703",
+      "reasoning_tokens_chars": 71,
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 77,
+        "total_tokens": 122,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "elapsed_s": 1.312,
+      "finish_reason": "stop",
+      "prompt_characters": 53
+    },
+    {
+      "id": "arithmetic-137x48",
+      "passed": true,
+      "content": "6576",
+      "reasoning_tokens_chars": 71,
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 78,
+        "total_tokens": 125,
+        "prompt_tokens_details": {
+          "cached_tokens": 53
+        }
+      },
+      "elapsed_s": 0.878,
+      "finish_reason": "stop",
+      "prompt_characters": 54
+    },
+    {
+      "id": "multistep",
+      "passed": true,
+      "content": "84",
+      "reasoning_tokens_chars": 73,
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 83,
+        "total_tokens": 125,
+        "prompt_tokens_details": {
+          "cached_tokens": 53
+        }
+      },
+      "elapsed_s": 0.825,
+      "finish_reason": "stop",
+      "prompt_characters": 46
+    },
+    {
+      "id": "fractions",
+      "passed": true,
+      "content": "31/36",
+      "reasoning_tokens_chars": 99,
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 84,
+        "total_tokens": 139,
+        "prompt_tokens_details": {
+          "cached_tokens": 53
+        }
+      },
+      "elapsed_s": 1.049,
+      "finish_reason": "stop",
+      "prompt_characters": 69
+    },
+    {
+      "id": "german-arithmetic",
+      "passed": true,
+      "content": "816",
+      "reasoning_tokens_chars": 99,
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 79,
+        "total_tokens": 140,
+        "prompt_tokens_details": {
+          "cached_tokens": 53
+        }
+      },
+      "elapsed_s": 1.102,
+      "finish_reason": "stop",
+      "prompt_characters": 46
+    },
+    {
+      "id": "abstain-missing-fact",
+      "passed": true,
+      "content": "The document does not state a launch date.",
+      "reasoning_tokens_chars": 264,
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 96,
+        "total_tokens": 164,
+        "prompt_tokens_details": {
+          "cached_tokens": 53
+        }
+      },
+      "elapsed_s": 1.463,
+      "finish_reason": "stop",
+      "prompt_characters": 170
+    },
+    {
+      "id": "document-citation",
+      "passed": false,
+      "content": "Document B",
+      "reasoning_tokens_chars": 265,
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 105,
+        "total_tokens": 173,
+        "prompt_tokens_details": {
+          "cached_tokens": 53
+        }
+      },
+      "elapsed_s": 1.507,
+      "finish_reason": "stop",
+      "prompt_characters": 177
+    },
+    {
+      "id": "untrusted-text",
+      "passed": true,
+      "content": "8443",
+      "reasoning_tokens_chars": 74,
+      "usage": {
+        "completion_tokens": 27,
+        "prompt_tokens": 113,
+        "total_tokens": 140,
+        "prompt_tokens_details": {
+          "cached_tokens": 53
+        }
+      },
+      "elapsed_s": 0.902,
+      "finish_reason": "stop",
+      "prompt_characters": 235
+    },
+    {
+      "id": "json-format",
+      "passed": true,
+      "content": "{\"square\":49,\"cube\":343}",
+      "reasoning_tokens_chars": 137,
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 88,
+        "total_tokens": 138,
+        "prompt_tokens_details": {
+          "cached_tokens": 53
+        }
+      },
+      "elapsed_s": 0.97,
+      "finish_reason": "stop",
+      "prompt_characters": 99
+    },
+    {
+      "id": "long-document-recall",
+      "passed": true,
+      "content": "K7M-482",
+      "reasoning_tokens_chars": 126,
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 6398,
+        "total_tokens": 6448,
+        "prompt_tokens_details": {
+          "cached_tokens": 53
+        }
+      },
+      "elapsed_s": 4.571,
+      "finish_reason": "stop",
+      "prompt_characters": 50107
+    }
+  ]
+}
