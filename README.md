@@ -41,9 +41,18 @@ The 10 handcrafted sanity cases are available in `scripts/quality_probe.py` and 
 
 Observed: **9/10** simple cases passed. Arithmetic, German arithmetic, valid JSON, a narrow synthetic prompt-injection example and 6.4k-token retrieval passed. The July sales citation question returned `Document B` but omitted the figure `21`, so failed the exact expected-answer check. This is a small handcrafted functionality probe **not** AgentDojo, not a factual accuracy benchmark, and not a general prompt-injection safety result. It has no matched FP8 or other-model baseline.
 
-## Dual GPU caveat
+## Matched 4090 versus 4090+3060 experiment
 
-An initial RTX 4090 + RTX 3060 attempt aborted with `CUDA error: no kernel image is available for execution on the device`. The original build was compiled **only for SM89**, whereas the 3060 needs SM86. This is a test configuration error, not evidence of a Kolibri limitation. No dual-GPU throughput claims are made from that failed run.
+We rebuilt the **same pinned llama.cpp commit** with both SM86 (RTX 3060) and SM89 (RTX 4090) CUDA targets, then ran five repeats for each configuration using the same Q4 checkpoint and `-ncmoe 30 -ngl 999 -fitt 2048 -t 8` settings. Dual-device runs used `-ts 8/1`.
+
+| Setup | pp256 tokens/s | tg96 tokens/s |
+|---|---:|---:|
+| RTX 4090 alone (dual-target binary) | 408.29 | **70.52** |
+| RTX 4090 + RTX 3060, split 8:1 | **577.22** | 60.23 |
+
+The second card improved prefill by **41.4%** but reduced per-token decode by **14.6%** on this specific test. Results are in `results/q4-builddual-*.json`; reproduction is in `scripts/bench_dual.sh`. This is a single split, not a tuning sweep; do not assume dual GPUs always hurt or help.
+
+The initial two-device attempt had aborted with `CUDA error: no kernel image is available for execution on the device` because we originally built for SM89 only. That failure was an **invalid CUDA build target**, corrected by compiling for `86;89`, not an actual Kolibri architecture limitation.
 
 ## Reuse
 
